@@ -1,0 +1,13 @@
+# Core ML stack
+torch==2.2.2                # CPU‑only wheel (no +cuXX suffix)
+transformers>=4.40.0
+accelerate>=0.30.0
+bitsandbytes==0.42.0        # CPU‑only build – provides load_in_4bit / load_in_8bit
+
+# Streamlit UI
+streamlit>=1.35.0
+# Optional – nice looking chat bubbles (pure‑Python, no extra binaries)
+streamlit-chat>=0.0.2.2
+
+# Optional – if you ever want to load a pre‑quantised GPTQ checkpoint
+auto-gptq>=0.7.1

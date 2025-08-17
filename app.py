@@ -8,7 +8,7 @@ import streamlit as st
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
 # ------------------------------------------------------------------
-# 1️⃣  USER SETTINGS – no quant, small model, CPU-safe
+# 1️⃣ USER SETTINGS – no quant, small model, CPU-safe
 # ------------------------------------------------------------------
 REPO_ID = "distilgpt2"   # lighter model, no HF token needed
 QUANT = None             # No quantization in this version on CPU
@@ -70,6 +70,7 @@ user_input = st.chat_input("Ask something …") if hasattr(st, "chat_input") els
 if user_input:
     st.session_state.history.append((user_input, ""))
 
+    # Build the conversational prompt
     prompt = ""
     for u, b in st.session_state.history:
         if b == "":
@@ -84,4 +85,6 @@ if user_input:
     answer = answer.split("\nUser:")[0].strip()
 
     st.session_state.history[-1] = (user_input, answer)
-    st.experimental_rerun()
+    
+    # No rerun needed; UI will refresh on next run automatically
+    # st.experimental_rerun()  <-- removed

@@ -1,7 +1,8 @@
 streamlit
 transformers>=4.33.0
-accelerate>=0.21.0
 torch
-bitsandbytes
+accelerate>=0.20.0
+# Exclude bitsandbytes because CPU-only deploys often fail, fallback logic covers it
+# bitsandbytes
 streamlit_chat
 sentencepiece
